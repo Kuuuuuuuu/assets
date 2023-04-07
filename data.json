@@ -20,9 +20,9 @@
       "link": "https://discord.com/api/oauth2/authorize?client_id=887751573046976542&permissions=8&scope=bot%20applications.commands"
     },
     {
-      "name": "Hoshino",
+      "name": "Kyaru",
       "description": "บอท Discord ส่วนตัวที่เอาไว้ดูแลเซิฟเวอร์ต่างๆ",
-      "image": "./assets/hoshino.png",
+      "image": "./assets/kyaru.jpg",
       "link": "https://kyaru.nayukikuu.xyz",
       "buttonName": "Dashboard"
     }
