@@ -10,19 +10,19 @@
     {
       "name": "Melida",
       "description": "บอทเพลงสำหรับ Discord",
-      "image": "./assets/Melida.jpg",
+      "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/Melida.jpg",
       "link": "https://discord.com/api/oauth2/authorize?client_id=887751573046976542&permissions=8&scope=bot%20applications.commands"
     },
     {
       "name": "Ayaka",
       "description": "บอทเพลงสำหรับ Discord",
-      "image": "./assets/Ayaka.jpg",
+      "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/Ayaka.jpg",
       "link": "https://discord.com/api/oauth2/authorize?client_id=887751573046976542&permissions=8&scope=bot%20applications.commands"
     },
     {
       "name": "Kyaru",
       "description": "บอท Discord ส่วนตัวที่เอาไว้ดูแลเซิฟเวอร์ต่างๆ",
-      "image": "./assets/kyaru.jpg",
+      "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/kyaru.jpg",
       "link": "https://kyaru.nayukikuu.xyz",
       "buttonName": "Dashboard"
     }
