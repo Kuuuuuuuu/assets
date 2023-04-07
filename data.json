@@ -2,8 +2,9 @@
   "blogs": [
     {
       "id": 1,
-      "title": "test",
-      "body": "test"
+      "title": "RSS Feed ยังไม่มีเด้อ",
+      "body": "พอดีขก ทำ แล้วก็ง่วงนอนด้วยเดียวค่อยทำต่อวันว่างๆ",
+      "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/rss.png"
     }
   ],
   "projects": [
