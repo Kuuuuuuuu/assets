@@ -1,12 +1,4 @@
 {
-  "blogs": [
-    {
-      "id": 1,
-      "title": "RSS Feed ยังไม่มีเด้อ",
-      "body": "พอดีขก ทำ แล้วก็ง่วงนอนด้วยเดียวค่อยทำต่อวันว่างๆ",
-      "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/rss.png"
-    }
-  ],
   "projects": [
     {
       "name": "Melida",
@@ -24,7 +16,7 @@
       "name": "Kyaru",
       "description": "บอท Discord ส่วนตัวที่เอาไว้ดูแลเซิฟเวอร์ต่างๆ",
       "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/kyaru.jpg",
-      "link": "https://kyaru.nayukikuu.xyz",
+      "link": "https://kyaru.nayuki.cyou",
       "buttonName": "Dashboard"
     }
   ]
