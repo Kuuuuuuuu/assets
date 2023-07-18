@@ -13,10 +13,10 @@
       "link": "https://discord.com/api/oauth2/authorize?client_id=887751573046976542&permissions=8&scope=bot%20applications.commands"
     },
     {
-      "name": "Kyaru",
+      "name": "Karyl",
       "description": "บอท Discord ส่วนตัวที่เอาไว้ดูแลเซิฟเวอร์ต่างๆ",
-      "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/kyaru.jpg",
-      "link": "https://kyaru.nayuki.cyou",
+      "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/karyl.jpg",
+      "link": "https://karyl.nayuki.cyou",
       "buttonName": "Dashboard"
     }
   ]
