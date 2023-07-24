@@ -4,20 +4,23 @@
       "name": "Melida",
       "description": "บอทเพลงสำหรับ Discord",
       "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Melida.jpg",
-      "link": "https://discord.com/api/oauth2/authorize?client_id=887751573046976542&permissions=8&scope=bot%20applications.commands"
+      "link": "https://discord.com/api/oauth2/authorize?client_id=887751573046976542&permissions=8&scope=bot%20applications.commands",
+      "status": "Inactive"
     },
     {
       "name": "Ayaka",
       "description": "บอทเพลงสำหรับ Discord",
       "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Ayaka.jpg",
-      "link": "https://discord.com/api/oauth2/authorize?client_id=887751573046976542&permissions=8&scope=bot%20applications.commands"
+      "link": "https://discord.com/api/oauth2/authorize?client_id=887751573046976542&permissions=8&scope=bot%20applications.commands",
+      "status": "Inactive"
     },
     {
       "name": "Karyl",
       "description": "บอท Discord ส่วนตัวที่เอาไว้ดูแลเซิฟเวอร์ต่างๆ",
       "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/karyl.jpg",
       "link": "https://karyl.nayuki.cyou",
-      "buttonName": "Dashboard"
+      "buttonName": "Dashboard",
+      "status": "Active"
     }
   ]
 }
