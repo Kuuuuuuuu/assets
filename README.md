@@ -1,6 +1,6 @@
 ### nayuki.cyou assets
 
-#### - File Structure:
+#### File Structure:
 
 ```js
 {
