@@ -4,12 +4,12 @@
 
 ```js
 {
-  "name": "string",
-  "description": "string",
-  "image": "string",
+  "name": string,
+  "description": string,
+  "image": string,
   "button": {
-    "text": "string",
-    "link": "string"
+    "text": string,
+    "link": string
   },
   "status": IStatus
 }
