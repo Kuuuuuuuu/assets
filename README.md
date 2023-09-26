@@ -11,6 +11,6 @@
     "text": "string",
     "link": "string"
   },
-  "status": "Active" | "Inactive" | "Archived"
+  "status": {"Active" | "Inactive" | "Archived"}
 }
 ```
