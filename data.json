@@ -2,7 +2,7 @@
   "projects": [
     {
       "name": "Melida",
-      "description": "บอทเพลงสำหรับ Discord",
+      "description": "Music bot for Discord.",
       "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Melida.jpg",
       "button": {
         "text": "Invite",
@@ -12,7 +12,7 @@
     },
     {
       "name": "Ayaka",
-      "description": "บอทเพลงสำหรับ Discord",
+      "description": "Music bot for Discord.",
       "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Ayaka.jpg",
       "button": {
         "text": "Invite",
@@ -22,11 +22,21 @@
     },
     {
       "name": "Karyl",
-      "description": "บอท Discord ส่วนตัวที่เอาไว้ดูแลเซิฟเวอร์ต่างๆ",
+      "description": "A personal Discord bot designed to manage various servers.",
       "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/karyl.jpg",
       "button": {
         "text": "Website",
         "link": "https://karyl.rocks"
+      },
+      "status": "Active"
+    },
+    {
+      "name": "Nayuki's Tweaks",
+      "description": "Tweaks for my Windows 10 systems.",
+      "image": "https://images-ext-1.discordapp.net/external/W75MV37x628P2FkB6QEHQ4v2HZLp34KGOYRIT7Ob1Q0/https/opengraph.githubassets.com/eb11ac6af03d6708d4a2c317b2671ab579dda6bc14586cfe95be402cf9fa7977/Kuuuuuuuu/Tweaks?width=960&height=480",
+      "button": {
+        "text": "Website",
+        "link": "https://github.com/Kuuuuuuuu/Tweaks"
       },
       "status": "Active"
     }
