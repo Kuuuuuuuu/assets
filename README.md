@@ -2,7 +2,7 @@
 
 - File Structure:
 
-```json
+```js
 {
   "name": "string",
   "description": "string",
@@ -11,6 +11,8 @@
     "text": "string",
     "link": "string"
   },
-  "status": {"Active" | "Inactive" | "Archived"}
+  "status": IStatus
 }
+
+type IStatus = 'Active' | 'Inactive' | 'Archived';
 ```
