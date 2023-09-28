@@ -1,50 +1,50 @@
 {
-  "404Message": [
-    "Oops! It looks like this page has gone on a vacation and forgot to leave a forwarding address. 🌴🏖️",
-    "404 Error: Houston, we have a problem! This page is lost in space. 🚀🌌",
-    "404 Error: This page is on a coffee break. It'll be back when it's had enough caffeine to function properly. ☕💤",
-    "404 Error: The page you're looking for is playing hide and seek. Ready or not, here we don't come! 🙈🙉🙊"
-  ], 
-  "projects": [
-    {
-      "name": "Melida",
-      "description": "Music bot for Discord.",
-      "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Melida.jpg",
-      "button": {
-        "text": "Invite",
-        "link": "https://discord.com/api/oauth2/authorize?client_id=887751573046976542&permissions=4306505024&scope=bot%20applications.commands"
-      },
-      "status": "Inactive"
-    },
-    {
-      "name": "Ayaka",
-      "description": "Music bot for Discord.",
-      "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Ayaka.jpg",
-      "button": {
-        "text": "Invite",
-        "link": "https://discord.com/api/oauth2/authorize?client_id=706144670807228568&permissions=4306505024&scope=bot%20applications.commands"
-      },
-      "status": "Inactive"
-    },
-    {
-      "name": "Karyl",
-      "description": "A personal Discord bot designed to manage various servers.",
-      "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/karyl.jpg",
-      "button": {
-        "text": "Website",
-        "link": "https://karyl.rocks"
-      },
-      "status": "Active"
-    },
-    {
-      "name": "Nayuki's Tweaks",
-      "description": "Tweaks for my Windows 10 systems.",
-      "image": "https://images-ext-1.discordapp.net/external/W75MV37x628P2FkB6QEHQ4v2HZLp34KGOYRIT7Ob1Q0/https/opengraph.githubassets.com/eb11ac6af03d6708d4a2c317b2671ab579dda6bc14586cfe95be402cf9fa7977/Kuuuuuuuu/Tweaks?width=960&height=480",
-      "button": {
-        "text": "Website",
-        "link": "https://github.com/Kuuuuuuuu/Tweaks"
-      },
-      "status": "Active"
-    }
-  ]
+	"404Message": [
+		{"text": "Oops! It looks like this page has gone on a vacation and forgot to leave a forwarding address. 🌴🏖️"},
+		{"text": "404 Error: Houston, we have a problem! This page is lost in space. 🚀🌌"},
+		{"text": "404 Error: Page on a coffee break. Back after caffeine! ☕💤"},
+		{"text": "404: The page is playing hide and seek. Seek and you shall not find! 🙈"}
+	],
+	"projects": [
+		{
+			"name": "Melida",
+			"description": "Music bot for Discord.",
+			"image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Melida.jpg",
+			"button": {
+				"text": "Invite",
+				"link": "https://discord.com/api/oauth2/authorize?client_id=887751573046976542&permissions=4306505024&scope=bot%20applications.commands"
+			},
+			"status": "Inactive"
+		},
+		{
+			"name": "Ayaka",
+			"description": "Music bot for Discord.",
+			"image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Ayaka.jpg",
+			"button": {
+				"text": "Invite",
+				"link": "https://discord.com/api/oauth2/authorize?client_id=706144670807228568&permissions=4306505024&scope=bot%20applications.commands"
+			},
+			"status": "Inactive"
+		},
+		{
+			"name": "Karyl",
+			"description": "A personal Discord bot designed to manage various servers.",
+			"image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/karyl.jpg",
+			"button": {
+				"text": "Website",
+				"link": "https://karyl.rocks"
+			},
+			"status": "Active"
+		},
+		{
+			"name": "Nayuki's Tweaks",
+			"description": "Tweaks for my Windows 10 systems.",
+			"image": "https://images-ext-1.discordapp.net/external/W75MV37x628P2FkB6QEHQ4v2HZLp34KGOYRIT7Ob1Q0/https/opengraph.githubassets.com/eb11ac6af03d6708d4a2c317b2671ab579dda6bc14586cfe95be402cf9fa7977/Kuuuuuuuu/Tweaks?width=960&height=480",
+			"button": {
+				"text": "Website",
+				"link": "https://github.com/Kuuuuuuuu/Tweaks"
+			},
+			"status": "Active"
+		}
+	]
 }
