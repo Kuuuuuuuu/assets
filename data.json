@@ -1,10 +1,4 @@
 {
-	"404Message": [
-		{"text": "Oops! It looks like this page has gone on a vacation and forgot to leave a forwarding address. 🌴🏖️"},
-		{"text": "404 Error: Houston, we have a problem! This page is lost in space. 🚀🌌"},
-		{"text": "404 Error: Page on a coffee break. Back after caffeine! ☕💤"},
-		{"text": "404: The page is playing hide and seek. Seek and you shall not find! 🙈"}
-	],
 	"projects": [
 		{
 			"name": "Melida",
