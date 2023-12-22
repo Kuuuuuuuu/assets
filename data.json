@@ -11,6 +11,26 @@
 			"status": "Active"
 		},
 		{
+			"name": "Discord Rainbow Role Bot",
+			"description": "Just a simple bot that gives a role a rainbow color.",
+			"image": "https://opengraph.githubassets.com/main/Kuuuuuuuu/discord-rainbow-roles-bot",
+			"button": {
+				"text": "Github",
+				"link": "https://github.com/Kuuuuuuuu/discord-rainbow-roles-bot"
+			},
+			"status": "Active"
+		},
+		{
+			"name": "Nayuki's Tweaks",
+			"description": "Tweaks for my Windows 10 systems.",
+			"image": "https://opengraph.githubassets.com/main/Kuuuuuuuu/Tweaks",
+			"button": {
+				"text": "Github",
+				"link": "https://github.com/Kuuuuuuuu/Tweaks"
+			},
+			"status": "Active"
+		},
+		{
 			"name": "Melida",
 			"description": "Music bot for Discord.",
 			"image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Melida.jpg",
@@ -30,15 +50,5 @@
 			},
 			"status": "Inactive"
 		},
-		{
-			"name": "Nayuki's Tweaks",
-			"description": "Tweaks for my Windows 10 systems.",
-			"image": "https://images-ext-1.discordapp.net/external/W75MV37x628P2FkB6QEHQ4v2HZLp34KGOYRIT7Ob1Q0/https/opengraph.githubassets.com/eb11ac6af03d6708d4a2c317b2671ab579dda6bc14586cfe95be402cf9fa7977/Kuuuuuuuu/Tweaks?width=960&height=480",
-			"button": {
-				"text": "Website",
-				"link": "https://github.com/Kuuuuuuuu/Tweaks"
-			},
-			"status": "Inactive"
-		}
 	]
 }
