@@ -1,54 +1,54 @@
 {
-	"projects": [
-		{
-			"name": "Karyl",
-			"description": "A personal Discord bot designed to manage various servers.",
-			"image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/karyl.jpg",
-			"button": {
-				"text": "Website",
-				"link": "https://karyl.rocks"
-			},
-			"status": "Active"
-		},
-		{
-			"name": "Discord Rainbow Role Bot",
-			"description": "Just a simple bot that gives a role a rainbow color.",
-			"image": "https://opengraph.githubassets.com/main/Kuuuuuuuu/discord-rainbow-roles-bot",
-			"button": {
-				"text": "Github",
-				"link": "https://github.com/Kuuuuuuuu/discord-rainbow-roles-bot"
-			},
-			"status": "Active"
-		},
-		{
-			"name": "Nayuki's Tweaks",
-			"description": "Tweaks for my Windows 10 systems.",
-			"image": "https://opengraph.githubassets.com/main/Kuuuuuuuu/Tweaks",
-			"button": {
-				"text": "Github",
-				"link": "https://github.com/Kuuuuuuuu/Tweaks"
-			},
-			"status": "Active"
-		},
-		{
-			"name": "Melida",
-			"description": "Music bot for Discord.",
-			"image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Melida.jpg",
-			"button": {
-				"text": "Invite",
-				"link": "https://discord.com/api/oauth2/authorize?client_id=887751573046976542&permissions=4306505024&scope=bot%20applications.commands"
-			},
-			"status": "Inactive"
-		},
-		{
-			"name": "Ayaka",
-			"description": "Music bot for Discord.",
-			"image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Ayaka.jpg",
-			"button": {
-				"text": "Invite",
-				"link": "https://discord.com/api/oauth2/authorize?client_id=706144670807228568&permissions=4306505024&scope=bot%20applications.commands"
-			},
-			"status": "Inactive"
-		}
-	]
+  "projects": [
+    {
+      "name": "Karyl",
+      "description": "A personal Discord bot designed to manage various servers.",
+      "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/karyl.jpg",
+      "button": {
+        "text": "Website",
+        "link": "https://karyl.rocks"
+      },
+      "status": "Active"
+    },
+    {
+      "name": "Discord Rainbow Role Bot",
+      "description": "Just a simple bot that gives a role a rainbow color.",
+      "image": "https://opengraph.githubassets.com/main/Kuuuuuuuu/discord-rainbow-roles-bot",
+      "button": {
+        "text": "Github",
+        "link": "https://github.com/Kuuuuuuuu/discord-rainbow-roles-bot"
+      },
+      "status": "Active"
+    },
+    {
+      "name": "Nayuki's Tweaks",
+      "description": "Tweaks for my Windows 10 systems.",
+      "image": "https://opengraph.githubassets.com/main/Kuuuuuuuu/Tweaks",
+      "button": {
+        "text": "Github",
+        "link": "https://github.com/Kuuuuuuuu/Tweaks"
+      },
+      "status": "Active"
+    },
+    {
+      "name": "Melida",
+      "description": "Music bot for Discord.",
+      "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Melida.jpg",
+      "button": {
+        "text": "Invite",
+        "link": "https://discord.com/api/oauth2/authorize?client_id=887751573046976542&permissions=4306505024&scope=bot%20applications.commands"
+      },
+      "status": "Inactive"
+    },
+    {
+      "name": "Ayaka",
+      "description": "Music bot for Discord.",
+      "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Ayaka.jpg",
+      "button": {
+        "text": "Invite",
+        "link": "https://discord.com/api/oauth2/authorize?client_id=706144670807228568&permissions=4306505024&scope=bot%20applications.commands"
+      },
+      "status": "Inactive"
+    }
+  ]
 }
