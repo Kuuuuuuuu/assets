@@ -11,6 +11,16 @@
       "status": "Active"
     },
     {
+      "name": "Discord Radio Bot",
+      "description": "a simple Discord bot that play a live stream in a voice channel",
+      "image": "https://opengraph.githubassets.com/main/Kuuuuuuuu/discord-radio-bot",
+      "button": {
+        "text": "Github",
+        "link": "https://github.com/Kuuuuuuuu/discord-radio-bot"
+      },
+      "status": "Active"
+    },
+    {
       "name": "Discord Rainbow Role Bot",
       "description": "Just a simple bot that gives a role a rainbow color.",
       "image": "https://opengraph.githubassets.com/main/Kuuuuuuuu/discord-rainbow-roles-bot",
