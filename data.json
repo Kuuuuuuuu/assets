@@ -1,12 +1,12 @@
 {
   "projects": [
     {
-      "name": "Karyl",
+      "name": "Mashiro",
       "description": "A personal Discord bot designed to manage various servers.",
-      "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/karyl.jpg",
+      "image": "https://mashiro.sbs/images/banner.jpg",
       "button": {
         "text": "Website",
-        "link": "https://karyl.rocks"
+        "link": "https://mashiro.sbs"
       },
       "status": "Active"
     },
