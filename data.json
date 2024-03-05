@@ -8,6 +8,13 @@
       "status": "Active"
     },
     {
+      "name": "Wind",
+      "description": "a simple URL shortener written in TypeScript with Express.js and MySQL2",
+      "image": "https://opengraph.githubassets.com/main/Kuuuuuuuu/Wind",
+      "link": "https://github.com/Kuuuuuuuu/Wind",
+      "status": "Active"
+    },
+    {
       "name": "Discord Radio Bot",
       "description": "a simple Discord bot that play a live stream in a voice channel",
       "image": "https://opengraph.githubassets.com/main/Kuuuuuuuu/discord-radio-bot",
