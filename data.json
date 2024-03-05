@@ -4,60 +4,42 @@
       "name": "Mashiro",
       "description": "A personal Discord bot designed to manage various servers.",
       "image": "https://mashiro.sbs/images/banner.jpg",
-      "button": {
-        "text": "Website",
-        "link": "https://mashiro.sbs"
-      },
+      "link": "https://mashiro.sbs",
       "status": "Active"
     },
     {
       "name": "Discord Radio Bot",
       "description": "a simple Discord bot that play a live stream in a voice channel",
       "image": "https://opengraph.githubassets.com/main/Kuuuuuuuu/discord-radio-bot",
-      "button": {
-        "text": "Github",
-        "link": "https://github.com/Kuuuuuuuu/discord-radio-bot"
-      },
+      "link": "https://github.com/Kuuuuuuuu/discord-radio-bot",
       "status": "Active"
     },
     {
       "name": "Discord Rainbow Role Bot",
       "description": "Just a simple bot that gives a role a rainbow color.",
       "image": "https://opengraph.githubassets.com/main/Kuuuuuuuu/discord-rainbow-roles-bot",
-      "button": {
-        "text": "Github",
-        "link": "https://github.com/Kuuuuuuuu/discord-rainbow-roles-bot"
-      },
+      "link": "https://github.com/Kuuuuuuuu/discord-rainbow-roles-bot",
       "status": "Active"
     },
     {
       "name": "Nayuki's Tweaks",
       "description": "Tweaks for my Windows 10 systems.",
       "image": "https://opengraph.githubassets.com/main/Kuuuuuuuu/Tweaks",
-      "button": {
-        "text": "Github",
-        "link": "https://github.com/Kuuuuuuuu/Tweaks"
-      },
+      "link": "https://github.com/Kuuuuuuuu/Tweaks",
       "status": "Inactive"
     },
     {
       "name": "Melida",
       "description": "Music bot for Discord.",
       "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Melida.jpg",
-      "button": {
-        "text": "Invite",
-        "link": "https://discord.com/api/oauth2/authorize?client_id=887751573046976542&permissions=4306505024&scope=bot%20applications.commands"
-      },
+      "link": "https://discord.com/api/oauth2/authorize?client_id=887751573046976542&permissions=4306505024&scope=bot%20applications.commands",
       "status": "Inactive"
     },
     {
       "name": "Ayaka",
       "description": "Music bot for Discord.",
       "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Ayaka.jpg",
-      "button": {
-        "text": "Invite",
-        "link": "https://discord.com/api/oauth2/authorize?client_id=706144670807228568&permissions=4306505024&scope=bot%20applications.commands"
-      },
+      "link": "https://discord.com/api/oauth2/authorize?client_id=706144670807228568&permissions=4306505024&scope=bot%20applications.commands",
       "status": "Inactive"
     }
   ]
