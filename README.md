@@ -7,10 +7,7 @@
   "name": string,
   "description": string,
   "image": string,
-  "button": {
-    "text": string,
-    "link": string
-  },
+  "link": string,
   "status": IStatus
 }
 
