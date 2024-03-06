@@ -112,8 +112,15 @@ func dataToFile(data Data, filePath string) error {
 }
 
 func updateReadme() {
-	// wtf
-	currentDate := time.Now().Add(time.Hour * 7).Format("2006-01-02 15:04:05") // gmt+7
+	// it not my fault that idk about LoadLocation function LOL
+	location, err := time.LoadLocation("Asia/Jakarta")
+
+	if err != nil {
+		fmt.Printf("Error loading location: %v", err)
+		return
+	}
+
+	currentDate := time.Now().In(location).Format("2006-01-02 15:04:05")
 
 	readme, err := os.ReadFile("README.md")
 	if err != nil {
