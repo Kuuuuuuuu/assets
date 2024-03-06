@@ -2,8 +2,7 @@ name: task
 
 on:
   push:
-    branches:
-      - master
+    branches: [ "main" ]
   schedule:
     - cron: '*/60 * * * *'
   workflow_dispatch:
@@ -13,10 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: "1"
-        uses: actions/checkout@master
-        with:
-          fetch-depth: 1
+      - uses: actions/checkout@v3
 
       - name: Set up Go
         uses: actions/setup-go@v4
