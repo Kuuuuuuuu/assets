@@ -7,6 +7,7 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"time"
 )
 
 type Value struct {
@@ -35,6 +36,8 @@ func main() {
 		fmt.Printf("Error: %v\n", err)
 		return
 	}
+
+	updateReadme()
 }
 
 func readDataFromFile(filePath string) (Data, error) {
@@ -105,4 +108,27 @@ func dataToFile(data Data, filePath string) error {
 	}
 
 	return nil
+}
+
+func updateReadme() {
+	// wtf
+	currentDate := time.Now().Format("2006-01-02 15:04:05")
+
+	readme, err := os.ReadFile("README.md")
+	if err != nil {
+		fmt.Printf("Error reading README.md file: %v", err)
+		return
+	}
+
+	// don't mind my code lol trying to learn go
+	re := regexp.MustCompile(`**Last updated:** \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}`)
+	updatedReadme := re.ReplaceAllString(string(readme), "Last updated: "+currentDate)
+
+	err = os.WriteFile("README.md", []byte(updatedReadme), 0644)
+	if err != nil {
+		fmt.Printf("Error writing to README.md: %v", err)
+		return
+	}
+
+	fmt.Println("Updated README.md")
 }

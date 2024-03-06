@@ -1,17 +1,23 @@
-### nayuki.cyou assets
+### Nayuki.cyou Assets 🌐
 
-[![task](https://github.com/Kuuuuuuuu/assets/actions/workflows/main.yml/badge.svg)](https://github.com/Kuuuuuuuu/assets/actions/workflows/main.yml)
+Powered by Go and GitHub Actions 🚀
 
-#### File Structure:
+<br/>
 
-```js
+**Last Updated:** 2024-03-07 03:01:55
+
+[![Task Status](https://github.com/Kuuuuuuuu/assets/actions/workflows/main.yml/badge.svg)](https://github.com/Kuuuuuuuu/assets/actions/workflows/main.yml)
+
+#### File Structure 📁
+
+```json
 {
-  "name": string,
-  "description": string,
-  "image": string,
-  "link": string,
-  "status": IStatus
-  "languages": string[]
+  "name": "string",
+  "description": "string",
+  "image": "string",
+  "link": "string",
+  "status": "IStatus",
+  "languages": ["string"]
 }
 
 type IStatus = 'Active' | 'Inactive' | 'Archived';
