@@ -122,7 +122,7 @@ func updateReadme() {
 
 	// don't mind my code lol trying to learn go
 	re := regexp.MustCompile(`Last updated: \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}`)
-	updatedReadme := re.ReplaceAllString(string(readme), "Last updated: "+currentDate)
+	updatedReadme := re.ReplaceAllString(string(readme), "Last Updated: "+currentDate)
 
 	err = os.WriteFile("README.md", []byte(updatedReadme), 0644)
 	if err != nil {
