@@ -9,6 +9,7 @@
   "image": string,
   "link": string,
   "status": IStatus
+  "languages: string[]
 }
 
 type IStatus = 'Active' | 'Inactive' | 'Archived';
