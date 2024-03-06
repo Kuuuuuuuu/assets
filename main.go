@@ -56,7 +56,8 @@ func readDataFromFile(filePath string) (Data, error) {
 
 func updateLanguages(data Data) {
 	for key, value := range data {
-		githubRegex := regexp.MustCompile(`https:\/\/github.com\/([a-zA-Z0-9-]+)\/([a-zA-Z0-9-]+)`)
+		// this might better for github username and repo name
+		githubRegex := regexp.MustCompile(`https://github.com/([^/]+)/([^/]+)`)
 		if githubRegex.MatchString(value.Link) {
 			matches := githubRegex.FindStringSubmatch(value.Link)
 			if len(matches) == 3 {
