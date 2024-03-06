@@ -10,14 +10,14 @@ Powered by Go and GitHub Actions 🚀
 
 #### File Structure 📁
 
-```json
+```js
 {
-  "name": "string",
-  "description": "string",
-  "image": "string",
-  "link": "string",
-  "status": "IStatus",
-  "languages": ["string"]
+  "name": string,
+  "description": string,
+  "image": string,
+  "link": string,
+  "status": IStatus
+  "languages": string[]
 }
 
 type IStatus = 'Active' | 'Inactive' | 'Archived';
