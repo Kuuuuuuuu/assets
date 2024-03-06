@@ -11,41 +11,28 @@
     "description": "a simple URL shortener written in TypeScript with Express.js and MySQL2",
     "image": "https://opengraph.githubassets.com/main/Kuuuuuuuu/Wind",
     "link": "https://github.com/Kuuuuuuuu/Wind",
-    "status": "Active",
-    "languages": [
-      "TypeScript",
-      "EJS"
-    ]
+    "status": "Active"
   },
   "3": {
     "name": "Discord Radio Bot",
     "description": "a simple Discord bot that play a live stream in a voice channel",
     "image": "https://opengraph.githubassets.com/main/Kuuuuuuuu/discord-radio-bot",
     "link": "https://github.com/Kuuuuuuuu/discord-radio-bot",
-    "status": "Active",
-    "languages": [
-      "JavaScript"
-    ]
+    "status": "Active"
   },
   "4": {
     "name": "Discord Rainbow Role Bot",
     "description": "Just a simple bot that gives a role a rainbow color.",
     "image": "https://opengraph.githubassets.com/main/Kuuuuuuuu/discord-rainbow-roles-bot",
     "link": "https://github.com/Kuuuuuuuu/discord-rainbow-roles-bot",
-    "status": "Active",
-    "languages": [
-      "JavaScript"
-    ]
+    "status": "Active"
   },
   "5": {
     "name": "Nayuki's Tweaks",
     "description": "Tweaks for my Windows 10 systems.",
     "image": "https://opengraph.githubassets.com/main/Kuuuuuuuu/Tweaks",
     "link": "https://github.com/Kuuuuuuuu/Tweaks",
-    "status": "Inactive",
-    "languages": [
-      "Batchfile"
-    ]
+    "status": "Inactive"
   },
   "6": {
     "name": "Melida",
