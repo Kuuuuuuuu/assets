@@ -1,13 +1,13 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
 	"regexp"
-	"strings"
 	"time"
 )
 
@@ -107,8 +107,8 @@ func dataToFile(data Data, filePath string) error {
 		return fmt.Errorf("Error while marshalling data: %v", err)
 	}
 
-	// replace \u0026 with & in the JSON data idk how to properly handle this lol
-	jsonData = []byte(strings.ReplaceAll(string(jsonData), `\u0026`, `&`))
+	// replace \u0026 with & in the JSON data still don't know to properly handle this LOL
+	jsonData = bytes.ReplaceAll(jsonData, []byte(`\u0026`), []byte(`&`))
 
 	if err := os.WriteFile(filePath, jsonData, 0644); err != nil {
 		return fmt.Errorf("Error writing to file: %v", err)
