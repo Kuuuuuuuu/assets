@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"regexp"
@@ -26,14 +27,14 @@ const dataFilePath = "data.json"
 func main() {
 	data, err := readDataFromFile(dataFilePath)
 	if err != nil {
-		fmt.Printf("Error: %v\n", err)
+		log.Fatalf("Error: %v", err)
 		return
 	}
 
 	updateLanguages(data)
 
 	if err := dataToFile(data, dataFilePath); err != nil {
-		fmt.Printf("Error: %v\n", err)
+		log.Fatalf("Error: %v", err)
 		return
 	}
 
@@ -61,30 +62,34 @@ func updateLanguages(data Data) {
 		if githubRegex.MatchString(value.Link) {
 			matches := githubRegex.FindStringSubmatch(value.Link)
 			if len(matches) == 3 {
-				getDataFromRepo(&value, matches[1], matches[2])
-				data[key] = value
+				// get the updated value
+				updatedValue := getDataFromRepo(value, matches[1], matches[2])
+				data[key] = updatedValue
 			}
 		}
 	}
 }
 
-func getDataFromRepo(value *Value, owner, repo string) {
-	response, err := http.Get(fmt.Sprintf("https://api.github.com/repos/%s/%s/languages", owner, repo))
+func getDataFromRepo(value Value, owner, repo string) Value {
+	client := &http.Client{} // wtf I never knew this is a thing
+
+	url := fmt.Sprintf("https://api.github.com/repos/%s/%s/languages", owner, repo)
+	response, err := client.Get(url)
 	if err != nil {
-		fmt.Printf("Error fetching data: %v\n", err)
-		return
+		log.Printf("Error fetching data from %s: %v", url, err)
+		return value
 	}
 	defer response.Body.Close()
 
 	if response.StatusCode != http.StatusOK {
-		fmt.Printf("Failed to fetch data. Status: %d\n", response.StatusCode)
-		return
+		log.Printf("Failed to fetch data from %s. Status: %d", url, response.StatusCode)
+		return value
 	}
 
 	var jsonMap map[string]interface{}
 	if err := json.NewDecoder(response.Body).Decode(&jsonMap); err != nil {
-		fmt.Printf("Error parsing JSON data: %v\n", err)
-		return
+		log.Printf("Error parsing JSON data: %v", err)
+		return value
 	}
 
 	var languages []string
@@ -93,6 +98,7 @@ func getDataFromRepo(value *Value, owner, repo string) {
 	}
 
 	value.Languages = languages
+	return value
 }
 
 func dataToFile(data Data, filePath string) error {
@@ -113,10 +119,10 @@ func dataToFile(data Data, filePath string) error {
 
 func updateReadme() {
 	// it not my fault that idk about LoadLocation function LOL
-	location, err := time.LoadLocation("Asia/Jakarta")
+	location, err := time.LoadLocation("Asia/Bangkok")
 
 	if err != nil {
-		fmt.Printf("Error loading location: %v", err)
+		log.Fatalf("Error loading location: %v", err)
 		return
 	}
 
@@ -124,7 +130,7 @@ func updateReadme() {
 
 	readme, err := os.ReadFile("README.md")
 	if err != nil {
-		fmt.Printf("Error reading README.md file: %v", err)
+		log.Fatalf("Error reading README.md: %v", err)
 		return
 	}
 
@@ -134,9 +140,9 @@ func updateReadme() {
 
 	err = os.WriteFile("README.md", []byte(updatedReadme), 0644)
 	if err != nil {
-		fmt.Printf("Error writing to README.md: %v", err)
+		log.Fatalf("Error writing to README.md: %v", err)
 		return
 	}
 
-	fmt.Println("Updated README.md")
+	log.Println("Updated README.md")
 }
