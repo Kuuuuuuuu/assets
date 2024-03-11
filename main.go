@@ -4,11 +4,25 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"regexp"
 	"time"
+)
+
+// yay, finally I know how to use constants and variables in go LOL
+const (
+	dataFilePath     = "data.json"
+	imagesFolderPath = "images"
+	githubAPIURL     = "https://api.github.com/repos/%s/%s/languages"
+	githubImageURL   = "https://opengraph.githubassets.com/main/%s/%s"
+)
+
+var (
+	githubRegex = regexp.MustCompile(`https://github.com/([^/]+)/([^/]+)`)
 )
 
 type Value struct {
@@ -22,19 +36,17 @@ type Value struct {
 
 type Data map[string]Value
 
-const dataFilePath = "data.json"
-
 func main() {
 	data, err := readDataFromFile(dataFilePath)
 	if err != nil {
-		log.Fatalf("Error: %v", err)
+		log.Fatalf("Error reading data file: %v", err)
 		return
 	}
 
-	updateLanguages(data)
+	updateData(data)
 
 	if err := dataToFile(data, dataFilePath); err != nil {
-		log.Fatalf("Error: %v", err)
+		log.Fatalf("Error writing to file: %v", err)
 		return
 	}
 
@@ -55,13 +67,18 @@ func readDataFromFile(filePath string) (Data, error) {
 	return data, nil
 }
 
-func updateLanguages(data Data) {
+func updateData(data Data) {
 	for key, value := range data {
-		// this might better for github username and repo name
-		githubRegex := regexp.MustCompile(`https://github.com/([^/]+)/([^/]+)`)
 		if githubRegex.MatchString(value.Link) {
 			matches := githubRegex.FindStringSubmatch(value.Link)
 			if len(matches) == 3 {
+				// not sure is this good but It's working so I'll keep it lol
+				imagePath := filepath.Join(imagesFolderPath, fmt.Sprintf("%s.png", matches[2]))
+				if err := downloadImage(matches[1], matches[2], imagePath); err != nil {
+					log.Printf("Error downloading image for %s: %v\n", value.Name, err)
+					continue
+				}
+
 				// get the updated value
 				updatedValue := getDataFromRepo(value, matches[1], matches[2])
 				data[key] = updatedValue
@@ -70,10 +87,41 @@ func updateLanguages(data Data) {
 	}
 }
 
-func getDataFromRepo(value Value, owner, repo string) Value {
+func downloadImage(owner string, repo string, filePath string) error {
+	// Check if the image already exists
+	if _, err := os.Stat(filePath); err == nil {
+		return nil
+	}
+
+	url := fmt.Sprintf(githubImageURL, owner, repo)
+	response, err := http.Get(url)
+	if err != nil {
+		return fmt.Errorf("Error downloading image: %v", err)
+	}
+	defer response.Body.Close()
+
+	if response.StatusCode != http.StatusOK {
+		return fmt.Errorf("Failed to download image. Status: %d", response.StatusCode)
+	}
+
+	imageFile, err := os.Create(filePath)
+	if err != nil {
+		return fmt.Errorf("Error creating image file: %v", err)
+	}
+	defer imageFile.Close()
+
+	_, err = io.Copy(imageFile, response.Body)
+	if err != nil {
+		return fmt.Errorf("Error saving image file: %v", err)
+	}
+
+	return nil
+}
+
+func getDataFromRepo(value Value, owner string, repo string) Value {
 	client := &http.Client{} // wtf I never knew this is a thing
 
-	url := fmt.Sprintf("https://api.github.com/repos/%s/%s/languages", owner, repo)
+	url := fmt.Sprintf(githubAPIURL, owner, repo)
 	response, err := client.Get(url)
 	if err != nil {
 		log.Printf("Error fetching data from %s: %v", url, err)
@@ -120,7 +168,6 @@ func dataToFile(data Data, filePath string) error {
 func updateReadme() {
 	// it not my fault that idk about LoadLocation function LOL
 	location, err := time.LoadLocation("Asia/Bangkok")
-
 	if err != nil {
 		log.Fatalf("Error loading location: %v", err)
 		return
