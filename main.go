@@ -87,10 +87,13 @@ func updateData(data Data) {
 	}
 }
 
-func downloadImage(owner string, repo string, filePath string) error {
-	// Check if the image already exists
+func downloadImage(owner, repo, filePath string) error {
+	// Check if the image already exists. if it does, delete it
+	// because we want image always up to date
 	if _, err := os.Stat(filePath); err == nil {
-		return nil
+		if err := os.Remove(filePath); err != nil {
+			return fmt.Errorf("Error deleting existing image: %v", err)
+		}
 	}
 
 	url := fmt.Sprintf(githubImageURL, owner, repo)
@@ -108,7 +111,11 @@ func downloadImage(owner string, repo string, filePath string) error {
 	if err != nil {
 		return fmt.Errorf("Error creating image file: %v", err)
 	}
-	defer imageFile.Close()
+	defer func() { // handle the error if the file is not closed properly (I think)
+		if closeErr := imageFile.Close(); closeErr != nil {
+			log.Printf("Error closing image file: %v", closeErr)
+		}
+	}()
 
 	_, err = io.Copy(imageFile, response.Body)
 	if err != nil {
