@@ -56,12 +56,12 @@ func main() {
 func readDataFromFile(filePath string) (Data, error) {
 	dataFile, err := os.ReadFile(filePath)
 	if err != nil {
-		return nil, fmt.Errorf("Error reading data file: %v", err)
+		return nil, fmt.Errorf("error reading data file: %v", err)
 	}
 
 	var data Data
 	if err := json.Unmarshal(dataFile, &data); err != nil {
-		return nil, fmt.Errorf("Error parsing data: %v", err)
+		return nil, fmt.Errorf("error parsing data: %v", err)
 	}
 
 	return data, nil
@@ -92,24 +92,24 @@ func downloadImage(owner, repo, filePath string) error {
 	// because we want image always up to date
 	if _, err := os.Stat(filePath); err == nil {
 		if err := os.Remove(filePath); err != nil {
-			return fmt.Errorf("Error deleting existing image: %v", err)
+			return fmt.Errorf("error deleting existing image: %v", err)
 		}
 	}
 
 	url := fmt.Sprintf(githubImageURL, owner, repo)
 	response, err := http.Get(url)
 	if err != nil {
-		return fmt.Errorf("Error downloading image: %v", err)
+		return fmt.Errorf("error downloading image: %v", err)
 	}
 	defer response.Body.Close()
 
 	if response.StatusCode != http.StatusOK {
-		return fmt.Errorf("Failed to download image. Status: %d", response.StatusCode)
+		return fmt.Errorf("failed to download image. Status: %d", response.StatusCode)
 	}
 
 	imageFile, err := os.Create(filePath)
 	if err != nil {
-		return fmt.Errorf("Error creating image file: %v", err)
+		return fmt.Errorf("error creating image file: %v", err)
 	}
 	defer func() { // handle the error if the file is not closed properly (I think)
 		if closeErr := imageFile.Close(); closeErr != nil {
@@ -119,7 +119,7 @@ func downloadImage(owner, repo, filePath string) error {
 
 	_, err = io.Copy(imageFile, response.Body)
 	if err != nil {
-		return fmt.Errorf("Error saving image file: %v", err)
+		return fmt.Errorf("error saving image file: %v", err)
 	}
 
 	return nil
@@ -159,14 +159,14 @@ func getDataFromRepo(value Value, owner string, repo string) Value {
 func dataToFile(data Data, filePath string) error {
 	jsonData, err := json.MarshalIndent(data, "", "  ")
 	if err != nil {
-		return fmt.Errorf("Error while marshalling data: %v", err)
+		return fmt.Errorf("error while marshalling data: %v", err)
 	}
 
 	// replace \u0026 with & in the JSON data still don't know to properly handle this LOL
 	jsonData = bytes.ReplaceAll(jsonData, []byte(`\u0026`), []byte(`&`))
 
 	if err := os.WriteFile(filePath, jsonData, 0644); err != nil {
-		return fmt.Errorf("Error writing to file: %v", err)
+		return fmt.Errorf("error writing to file: %v", err)
 	}
 
 	return nil
