@@ -18,6 +18,13 @@
     ]
   },
   "3": {
+    "name": "Discord Bot animated profile",
+    "description": "A simple code to upload animated profile picture to Discord Bot",
+    "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/discord-bot-animated-profile.png",
+    "link": "https://github.com/Kuuuuuuuu/discord-bot-animated-profile",
+    "status": "Active"
+  },
+  "4": {
     "name": "Discord Radio Bot",
     "description": "a simple Discord bot that play a live stream in a voice channel",
     "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/discord-radio-bot.png",
@@ -27,7 +34,7 @@
       "JavaScript"
     ]
   },
-  "4": {
+  "5": {
     "name": "Discord Rainbow Role Bot",
     "description": "Just a simple bot that gives a role a rainbow color.",
     "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/discord-rainbow-roles-bot.png",
@@ -37,7 +44,7 @@
       "JavaScript"
     ]
   },
-  "5": {
+  "6": {
     "name": "Nayuki's Tweaks",
     "description": "Tweaks for my Windows 10 systems.",
     "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Tweaks.png",
@@ -47,14 +54,14 @@
       "Batchfile"
     ]
   },
-  "6": {
+  "7": {
     "name": "Melida",
     "description": "Music bot for Discord.",
     "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Melida.jpg",
     "link": "https://discord.com/api/oauth2/authorize?client_id=887751573046976542&permissions=4306505024&scope=bot%20applications.commands",
     "status": "Inactive"
   },
-  "7": {
+  "8": {
     "name": "Ayaka",
     "description": "Music bot for Discord.",
     "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Ayaka.jpg",
