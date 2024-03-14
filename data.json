@@ -22,7 +22,10 @@
     "description": "A simple code to upload animated profile picture to Discord Bot",
     "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/discord-bot-animated-profile.png",
     "link": "https://github.com/Kuuuuuuuu/discord-bot-animated-profile",
-    "status": "Active"
+    "status": "Active",
+    "languages": [
+      "JavaScript"
+    ]
   },
   "4": {
     "name": "Discord Radio Bot",
