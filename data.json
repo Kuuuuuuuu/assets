@@ -4,7 +4,13 @@
     "description": "A personal Discord bot designed to manage various servers.",
     "image": "https://mashiro.sbs/images/banner.jpg",
     "link": "https://mashiro.sbs",
-    "status": "Active"
+    "status": "Active",
+    "languages": [
+      "TypeScript",
+      "JavaScript",
+      "Go",
+      "EJS"
+    ]
   },
   "2": {
     "name": "Wind",
