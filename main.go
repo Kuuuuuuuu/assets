@@ -90,11 +90,6 @@ func updateData(data Data) {
 func downloadImage(owner, repo, filePath string) error {
 	// Check if the image already exists. if it does, delete it
 	// because we want image always up to date
-	if _, err := os.Stat(filePath); err == nil {
-		if err := os.Remove(filePath); err != nil {
-			return fmt.Errorf("error deleting existing image: %v", err)
-		}
-	}
 
 	url := fmt.Sprintf(githubImageURL, owner, repo)
 	response, err := http.Get(url)
@@ -105,6 +100,12 @@ func downloadImage(owner, repo, filePath string) error {
 
 	if response.StatusCode != http.StatusOK {
 		return fmt.Errorf("failed to download image. Status: %d", response.StatusCode)
+	}
+
+	if _, err := os.Stat(filePath); err == nil {
+		if err := os.Remove(filePath); err != nil {
+			return fmt.Errorf("error deleting existing image: %v", err)
+		}
 	}
 
 	imageFile, err := os.Create(filePath)
