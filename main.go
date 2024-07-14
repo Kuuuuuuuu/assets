@@ -127,7 +127,9 @@ func downloadImage(owner, repo, filePath string) error {
 }
 
 func getDataFromRepo(value Value, owner string, repo string) Value {
-	client := &http.Client{} // wtf I never knew this is a thing
+	client := &http.Client{
+		Timeout: 10 * time.Second, // 10 s timeout for idk aaaaaa
+	}
 
 	url := fmt.Sprintf(githubAPIURL, owner, repo)
 	response, err := client.Get(url)
@@ -148,7 +150,7 @@ func getDataFromRepo(value Value, owner string, repo string) Value {
 		return value
 	}
 
-	var languages []string
+	languages := make([]string, 0, len(jsonMap))
 	for key := range jsonMap {
 		languages = append(languages, key)
 	}
