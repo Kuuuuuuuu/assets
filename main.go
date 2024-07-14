@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bytes"
+	"strings"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -164,7 +164,8 @@ func dataToFile(data Data, filePath string) error {
 	}
 
 	// replace \u0026 with & in the JSON data still don't know to properly handle this LOL
-	jsonData = bytes.ReplaceAll(jsonData, []byte(`\u0026`), []byte(`&`))
+	replacer := strings.NewReplacer(`\u0026`, `&`)
+	jsonData = []byte(replacer.Replace(string(jsonData)))
 
 	if err := os.WriteFile(filePath, jsonData, 0644); err != nil {
 		return fmt.Errorf("error writing to file: %v", err)
