@@ -1,7 +1,6 @@
 package main
 
 import (
-	"strings"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -10,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"time"
 )
 
@@ -90,9 +90,12 @@ func updateData(data Data) {
 func downloadImage(owner, repo, filePath string) error {
 	// Check if the image already exists. if it does, delete it
 	// because we want image always up to date
+	client := &http.Client{
+		Timeout: 10 * time.Second, // 10 s timeout for idk aaaaaa
+	}
 
 	url := fmt.Sprintf(githubImageURL, owner, repo)
-	response, err := http.Get(url)
+	response, err := client.Get(url)
 	if err != nil {
 		return fmt.Errorf("error downloading image: %v", err)
 	}
@@ -118,8 +121,7 @@ func downloadImage(owner, repo, filePath string) error {
 		}
 	}()
 
-	_, err = io.Copy(imageFile, response.Body)
-	if err != nil {
+	if _, err = io.Copy(imageFile, response.Body); err != nil {
 		return fmt.Errorf("error saving image file: %v", err)
 	}
 
