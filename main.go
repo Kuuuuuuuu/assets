@@ -72,15 +72,16 @@ func updateData(data Data) {
 		if githubRegex.MatchString(value.Link) {
 			matches := githubRegex.FindStringSubmatch(value.Link)
 			if len(matches) == 3 {
+				owner, repo := matches[1], matches[2]
 				// not sure is this good but It's working so I'll keep it lol
-				imagePath := filepath.Join(imagesFolderPath, fmt.Sprintf("%s.png", matches[2]))
-				if err := downloadImage(matches[1], matches[2], imagePath); err != nil {
+				imagePath := filepath.Join(imagesFolderPath, fmt.Sprintf("%s.png", repo))
+				if err := downloadImage(owner, repo, imagePath); err != nil {
 					log.Printf("Error downloading image for %s: %v\n", value.Name, err)
 					continue
 				}
 
 				// get the updated value
-				updatedValue := getDataFromRepo(value, matches[1], matches[2])
+				updatedValue := getDataFromRepo(value, owner, repo)
 				data[key] = updatedValue
 			}
 		}
