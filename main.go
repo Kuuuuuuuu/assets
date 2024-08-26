@@ -1,6 +1,8 @@
 package main
 
 import (
+	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -9,7 +11,6 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
-	"strings"
 	"time"
 )
 
@@ -40,14 +41,12 @@ func main() {
 	data, err := readDataFromFile(dataFilePath)
 	if err != nil {
 		log.Fatalf("Error reading data file: %v", err)
-		return
 	}
 
 	updateData(data)
 
 	if err := dataToFile(data, dataFilePath); err != nil {
 		log.Fatalf("Error writing to file: %v", err)
-		return
 	}
 
 	updateReadme()
@@ -56,12 +55,12 @@ func main() {
 func readDataFromFile(filePath string) (Data, error) {
 	dataFile, err := os.ReadFile(filePath)
 	if err != nil {
-		return nil, fmt.Errorf("error reading data file: %v", err)
+		return Data{}, fmt.Errorf("error reading data file: %w", err)
 	}
 
 	var data Data
 	if err := json.Unmarshal(dataFile, &data); err != nil {
-		return nil, fmt.Errorf("error parsing data: %v", err)
+		return Data{}, fmt.Errorf("error parsing data: %w", err)
 	}
 
 	return data, nil
@@ -91,14 +90,18 @@ func updateData(data Data) {
 func downloadImage(owner, repo, filePath string) error {
 	// Check if the image already exists. if it does, delete it
 	// because we want image always up to date
-	client := &http.Client{
-		Timeout: 10 * time.Second, // 10 s timeout for idk aaaaaa
-	}
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
 
 	url := fmt.Sprintf(githubImageURL, owner, repo)
-	response, err := client.Get(url)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 	if err != nil {
-		return fmt.Errorf("error downloading image: %v", err)
+		return fmt.Errorf("error creating request: %w", err)
+	}
+
+	response, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return fmt.Errorf("error downloading image: %w", err)
 	}
 	defer response.Body.Close()
 
@@ -106,38 +109,44 @@ func downloadImage(owner, repo, filePath string) error {
 		return fmt.Errorf("failed to download image. Status: %d", response.StatusCode)
 	}
 
-	if _, err := os.Stat(filePath); err == nil {
-		if err := os.Remove(filePath); err != nil {
-			return fmt.Errorf("error deleting existing image: %v", err)
-		}
-	}
-
-	imageFile, err := os.Create(filePath)
+	// temp file in case something error
+	tempFile, err := os.CreateTemp(filepath.Dir(filePath), "temp-image-*")
 	if err != nil {
-		return fmt.Errorf("error creating image file: %v", err)
+		return fmt.Errorf("error creating temporary file: %w", err)
 	}
-	defer func() { // handle the error if the file is not closed properly (I think)
-		if closeErr := imageFile.Close(); closeErr != nil {
-			log.Printf("Error closing image file: %v", closeErr)
-		}
-	}()
+	tempFilePath := tempFile.Name()
+	defer os.Remove(tempFilePath)
 
-	if _, err = io.Copy(imageFile, response.Body); err != nil {
-		return fmt.Errorf("error saving image file: %v", err)
+	if _, err = io.Copy(tempFile, response.Body); err != nil {
+		tempFile.Close()
+		return fmt.Errorf("error saving image file: %w", err)
+	}
+
+	if err = tempFile.Close(); err != nil {
+		return fmt.Errorf("error closing temporary file: %w", err)
+	}
+
+	if err = os.Rename(tempFilePath, filePath); err != nil {
+		return fmt.Errorf("error replacing old image with new one: %w", err)
 	}
 
 	return nil
 }
 
 func getDataFromRepo(value Value, owner string, repo string) Value {
-	client := &http.Client{
-		Timeout: 10 * time.Second, // 10 s timeout for idk aaaaaa
-	}
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
 
 	url := fmt.Sprintf(githubAPIURL, owner, repo)
-	response, err := client.Get(url)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 	if err != nil {
-		log.Printf("Error fetching data from %s: %v", url, err)
+		fmt.Printf("Error creating request: %v\n", err)
+		return value
+	}
+
+	response, err := http.DefaultClient.Do(req)
+	if err != nil {
+		fmt.Printf("Error fetching data from %s: %v\n", url, err)
 		return value
 	}
 	defer response.Body.Close()
@@ -153,38 +162,36 @@ func getDataFromRepo(value Value, owner string, repo string) Value {
 		return value
 	}
 
-	languages := make([]string, 0, len(jsonMap))
+	value.Languages = make([]string, 0, len(jsonMap))
 	for key := range jsonMap {
-		languages = append(languages, key)
+		value.Languages = append(value.Languages, key)
 	}
 
-	value.Languages = languages
 	return value
 }
 
 func dataToFile(data Data, filePath string) error {
-	jsonData, err := json.MarshalIndent(data, "", "  ")
-	if err != nil {
-		return fmt.Errorf("error while marshalling data: %v", err)
+	buffer := &bytes.Buffer{}
+
+	encoder := json.NewEncoder(buffer)
+	encoder.SetIndent("", "  ") // 2 spaces :D
+	encoder.SetEscapeHTML(false)
+
+	if err := encoder.Encode(data); err != nil {
+		return fmt.Errorf("error while encoding data: %w", err)
 	}
 
-	// replace \u0026 with & in the JSON data still don't know to properly handle this LOL
-	replacer := strings.NewReplacer(`\u0026`, `&`)
-	jsonData = []byte(replacer.Replace(string(jsonData)))
-
-	if err := os.WriteFile(filePath, jsonData, 0644); err != nil {
-		return fmt.Errorf("error writing to file: %v", err)
+	if err := os.WriteFile(filePath, buffer.Bytes(), 0644); err != nil {
+		return fmt.Errorf("error writing to file: %w", err)
 	}
 
 	return nil
 }
 
 func updateReadme() {
-	// it not my fault that idk about LoadLocation function LOL
 	location, err := time.LoadLocation("Asia/Bangkok")
 	if err != nil {
 		log.Fatalf("Error loading location: %v", err)
-		return
 	}
 
 	currentDate := time.Now().In(location).Format("2006-01-02 15:04:05")
@@ -192,17 +199,13 @@ func updateReadme() {
 	readme, err := os.ReadFile("README.md")
 	if err != nil {
 		log.Fatalf("Error reading README.md: %v", err)
-		return
 	}
 
-	// don't mind my code lol trying to learn go
 	re := regexp.MustCompile(`Last Updated: \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}`)
 	updatedReadme := re.ReplaceAllString(string(readme), "Last Updated: "+currentDate)
 
-	err = os.WriteFile("README.md", []byte(updatedReadme), 0644)
-	if err != nil {
+	if err := os.WriteFile("README.md", []byte(updatedReadme), 0644); err != nil {
 		log.Fatalf("Error writing to README.md: %v", err)
-		return
 	}
 
 	log.Println("Updated README.md")
