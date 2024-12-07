@@ -17,7 +17,10 @@
     "description": "My AoC 2024 Solution that collect all of spaghetti code.",
     "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/advent-of-code-2024.png",
     "link": "https://github.com/Kuuuuuuuu/advent-of-code-2024",
-    "status": "Active"
+    "status": "Active",
+    "languages": [
+      "PHP"
+    ]
   },
   "3": {
     "name": "Wind",
