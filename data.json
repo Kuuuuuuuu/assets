@@ -13,6 +13,13 @@
     ]
   },
   "2": {
+    "name": "Advent of Code 2024",
+    "description": "My AoC 2024 Solution that collect all of spaghetti code.",
+    "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/advent-of-code-2024.png",
+    "link": "https://github.com/Kuuuuuuuu/advent-of-code-2024",
+    "status": "Active"
+  },
+  "3": {
     "name": "Wind",
     "description": "a simple URL shortener written in TypeScript with Express.js and MySQL2",
     "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Wind.png",
@@ -23,7 +30,7 @@
       "EJS"
     ]
   },
-  "3": {
+  "4": {
     "name": "Discord Bot animated profile",
     "description": "A simple code to upload animated profile picture to Discord Bot",
     "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/discord-bot-animated-profile.png",
@@ -33,7 +40,7 @@
       "JavaScript"
     ]
   },
-  "4": {
+  "5": {
     "name": "Discord Radio Bot",
     "description": "a simple Discord bot that play a live stream in a voice channel",
     "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/discord-radio-bot.png",
@@ -43,7 +50,7 @@
       "JavaScript"
     ]
   },
-  "5": {
+  "6": {
     "name": "Discord Rainbow Role Bot",
     "description": "Just a simple bot that gives a role a rainbow color.",
     "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/discord-rainbow-roles-bot.png",
@@ -53,7 +60,7 @@
       "JavaScript"
     ]
   },
-  "6": {
+  "7": {
     "name": "Nayuki's Tweaks",
     "description": "Tweaks for my Windows 10 systems.",
     "image": "https://raw.githubusercontent.com/Kuuuuuuuu/assets/main/images/Tweaks.png",
