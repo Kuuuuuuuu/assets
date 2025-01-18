@@ -194,14 +194,15 @@ func updateReadme() {
 		log.Fatalf("Error loading location: %v", err)
 	}
 
-	currentDate := time.Now().In(location).Format("2006-01-02 15:04:05")
+	currentDate := time.Now().In(location).Format(time.UnixDate)
 
 	readme, err := os.ReadFile("README.md")
 	if err != nil {
 		log.Fatalf("Error reading README.md: %v", err)
 	}
 
-	re := regexp.MustCompile(`Last Updated: \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}`)
+	// ex: Last Updated: Sun Jan 19 01:50:38 +07 2025
+	re := regexp.MustCompile(`Last Updated: [A-Za-z]{3} [A-Za-z]{3} \d{1,2} \d{2}:\d{2}:\d{2} [+-]\d{2} \d{4}`)
 	updatedReadme := re.ReplaceAllString(string(readme), "Last Updated: "+currentDate)
 
 	if err := os.WriteFile("README.md", []byte(updatedReadme), 0644); err != nil {

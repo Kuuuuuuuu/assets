@@ -1,10 +1,10 @@
-### Nayuki.cyou Assets 🌐
+### assets for nayuki.cyou  🌐
 
 Powered by Go and GitHub Actions 🚀
 
-<br/>
+---
 
-Last Updated: 2025-01-19 01:03:52
+Last Updated: Sun Jan 19 01:52:33 +07 2025
 
 [![Task Status](https://github.com/Kuuuuuuuu/assets/actions/workflows/main.yml/badge.svg)](https://github.com/Kuuuuuuuu/assets/actions/workflows/main.yml)
 
