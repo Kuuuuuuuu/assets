@@ -202,12 +202,21 @@ func updateReadme() {
 	}
 
 	// ex: Last Updated: Sun Jan 19 01:50:38 +07 2025
-	re := regexp.MustCompile(`Last Updated: [A-Za-z]{3} [A-Za-z]{3} \d{1,2} \d{2}:\d{2}:\d{2} [+-]\d{2} \d{4}`)
-	updatedReadme := re.ReplaceAllString(string(readme), "Last Updated: "+currentDate)
-
-	if err := os.WriteFile("README.md", []byte(updatedReadme), 0644); err != nil {
-		log.Fatalf("Error writing to README.md: %v", err)
+	re := regexp.MustCompile(`(?m)^Last Updated: .*`)
+	if !re.Match(readme) {
+		log.Println("No existing 'Last Updated' timestamp found in README.md. Adding a new one.")
+		updatedReadme := string(readme) + "\nLast Updated: " + currentDate + "\n"
+		writeReadme(updatedReadme)
 	}
 
-	log.Println("Updated README.md")
+	updatedReadme := re.ReplaceAllString(string(readme), "Last Updated: "+currentDate)
+
+	writeReadme(updatedReadme)
+}
+
+func writeReadme(content string) {
+	if err := os.WriteFile("README.md", []byte(content), 0644); err != nil {
+		log.Fatalf("Failed to write to README.md: %v", err)
+	}
+	log.Println("README.md successfully updated.")
 }
