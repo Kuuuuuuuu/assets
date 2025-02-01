@@ -68,22 +68,25 @@ func readDataFromFile(filePath string) (Data, error) {
 
 func updateData(data Data) {
 	for key, value := range data {
-		if githubRegex.MatchString(value.Link) {
-			matches := githubRegex.FindStringSubmatch(value.Link)
-			if len(matches) == 3 {
-				owner, repo := matches[1], matches[2]
-				// not sure is this good but It's working so I'll keep it lol
-				imagePath := filepath.Join(imagesFolderPath, fmt.Sprintf("%s.png", repo))
-				if err := downloadImage(owner, repo, imagePath); err != nil {
-					log.Printf("Error downloading image for %s: %v\n", value.Name, err)
-					continue
-				}
-
-				// get the updated value
-				updatedValue := getDataFromRepo(value, owner, repo)
-				data[key] = updatedValue
-			}
+		if !githubRegex.MatchString(value.Link) {
+			continue // skip if the link is not a GitHub link
 		}
+
+		matches := githubRegex.FindStringSubmatch(value.Link)
+		if len(matches) != 3 {
+			log.Printf("Invalid GitHub link format for %s: %s\n", value.Name, value.Link)
+			continue
+		}
+
+		owner, repo := matches[1], matches[2]
+		imagePath := filepath.Join(imagesFolderPath, fmt.Sprintf("%s.png", repo))
+
+		if err := downloadImage(owner, repo, imagePath); err != nil {
+			log.Printf("Error downloading image for %s: %v\n", value.Name, err)
+			continue
+		}
+
+		data[key] = getDataFromRepo(value, owner, repo)
 	}
 }
 
@@ -99,14 +102,18 @@ func downloadImage(owner, repo, filePath string) error {
 		return fmt.Errorf("error creating request: %w", err)
 	}
 
-	response, err := http.DefaultClient.Do(req)
+	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return fmt.Errorf("error downloading image: %w", err)
 	}
-	defer response.Body.Close()
+	defer resp.Body.Close()
 
-	if response.StatusCode != http.StatusOK {
-		return fmt.Errorf("failed to download image. Status: %d", response.StatusCode)
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("failed to download image. Status: %d", resp.StatusCode)
+	}
+
+	if err := os.MkdirAll(filepath.Dir(filePath), os.ModePerm); err != nil {
+		return fmt.Errorf("error creating image directory: %w", err)
 	}
 
 	// temp file in case something error
@@ -115,9 +122,9 @@ func downloadImage(owner, repo, filePath string) error {
 		return fmt.Errorf("error creating temporary file: %w", err)
 	}
 	tempFilePath := tempFile.Name()
-	defer os.Remove(tempFilePath)
+	defer os.Remove(tempFilePath) // clear temp file
 
-	if _, err = io.Copy(tempFile, response.Body); err != nil {
+	if _, err = io.Copy(tempFile, resp.Body); err != nil {
 		tempFile.Close()
 		return fmt.Errorf("error saving image file: %w", err)
 	}
